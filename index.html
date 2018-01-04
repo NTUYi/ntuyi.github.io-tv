@@ -167,13 +167,10 @@
               ]
             },
             markLine : {
-              
               data : [              
-
-
                 [
-                  {name: '标线1起点', value: 100, xAxis: 3, yAxis: -3},      
-                  {name: '标线1终点', xAxis: 3, yAxis: 5},             
+                  {name: '标线1起点', value: 100, xAxis: 1, yAxis: -0.2},      
+                  {name: '标线1终点', xAxis: 1, yAxis: 1.0},             
                 ]
               ]
             }
@@ -205,7 +202,7 @@
       </script>
       <div class="row">
         <div class="col-xl-12"><h4 id="contentType"></h4></div>
-        <script type="text/javascript">document.getElementById("contentType").innerHTML = "Now playing: "+ title + " Type: "type;</script>
+        <script type="text/javascript">document.getElementById("contentType").innerHTML = "Content Type: "+ type;</script>
       </div>
     </div>
 
@@ -325,9 +322,24 @@
 	}
 
      function getCurTime() { 
-      console.log(vid.currentTime);
+      
+      
+      // yTop = Math.max(Math.max(...dataVelance),Math.max(...dataArousal));
+      var values = []
+      dataVelance.forEach(function(v){
+        values.push(v[1])
+      })
 
-      yTop = Math.max(Math.max(...dataVelance),Math.max(...dataArousal));
+      dataArousal.forEach(function(a){
+        values.push(a[1])
+      })
+      var maxV = Math.max.apply(null,values)
+      var minV = Math.min.apply(null,values)
+
+      console.log('vid'+vid.currentTime);
+      console.log('max'+maxV);
+      console.log('min'+minV);
+
 
       myChart.setOption({
           
@@ -339,8 +351,8 @@
 
 
                 [
-                  {name: '标线1起点', value: vid.currentTime.toFixed(2), xAxis: vid.currentTime, yAxis: -0.3},      
-                  {name: '标线1终点', xAxis: vid.currentTime, yAxis: 1.2},             
+                  {name: '标线1起点', value: vid.currentTime.toFixed(2), xAxis: vid.currentTime, yAxis: minV},      
+                  {name: '标线1终点', xAxis: vid.currentTime, yAxis: maxV},             
                 ]
               ]
             }
