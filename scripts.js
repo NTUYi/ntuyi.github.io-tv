@@ -16,11 +16,13 @@ function takePhoto() {
 
   ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
   const data = canvas.toDataURL('image/jpeg');
+  console.log(data);
   const link = document.createElement('a');
   // link.href = data;
   link.setAttribute('download', 'handsome');
   link.innerHTML = `<img src="${data}" alt="Handsome Man" />`;
-  strip.insertBefore(link, strip.firsChild);
+  // strip.insertBefore(link, strip.firsChild);
+  detectCamImg(data);
 }
 
 go().catch(err => {
