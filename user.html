@@ -1,0 +1,22 @@
+<html>
+   <head>
+      <script type = "text/javascript">
+	var links = ['https://www.baidu.com/', 'http://www.sina.com.cn/','http://www.163.com/']
+	var rand = links[Math.floor(Math.random() * links.length)];
+
+            function Redirect() {
+               window.location = rand;
+            }
+         //-->
+      </script>
+   </head>
+   
+   <body>
+      <p>Thanks for you participation. Please click the button below to start. It will direct you to a random version of our user study. </p>
+      
+      <form>
+         <input type = "button" value = "Click here to start!" onclick = "Redirect();" />
+      </form>
+      
+   </body>
+</html>
